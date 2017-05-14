@@ -5,15 +5,15 @@ import java.util.regex.Pattern;
 public class TimeConverterImp implements TimeConverter {
 
 	private static final String LINE_SEPARATOR = System.lineSeparator();
-	private static final String FIRST_ROW_OFF = "0000";
+	private static final String FIRST_ROW_OFF = "OOOO";
 	private static final String FIRST_ROW_ON = "RRRR";
 	private static final String SECOND_ROW_OFF = FIRST_ROW_OFF;
 	private static final String SECOND_ROW_ON = FIRST_ROW_ON;
-	private static final String THIRD_ROW_OFF = "00000000000";
+	private static final String THIRD_ROW_OFF = "OOOOOOOOOOO";
 	private static final String THIRD_ROW_ON = "YYRYYRYYRYY";
-	private static final String FOURTH_ROW_OFF = "0000";
+	private static final String FOURTH_ROW_OFF = FIRST_ROW_OFF;
 	private static final String FOURTH_ROW_ON = "YYYY";
-	private static final String OFF = "0";
+	private static final String OFF = "O";
 	private static final Pattern TIME_PATTERN = Pattern.compile("[0-2][0-4]:[0-5][0-9]:[0-5][0-9]");
 	private static final String YELLOW = "Y";
 
@@ -24,6 +24,10 @@ public class TimeConverterImp implements TimeConverter {
 				int hours = Integer.parseInt(aTime.substring(0, 2));
 				int minutes = Integer.parseInt(aTime.substring(3, 5));
 				int seconds = Integer.parseInt(aTime.substring(6, 8));
+				
+				if(hours == 24 && (minutes != 0 || seconds != 0)) {
+					throw new RuntimeException();
+				}
 				
 				String secondsLamp = (seconds % 2 == 0) ? YELLOW : OFF;
 				

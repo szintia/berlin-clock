@@ -16,7 +16,7 @@ public class TimeConverterTest {
 	private static final String CONVERTED_END_OF_DAY_MIDNIGHT = "Y" + LINE_SEPARATOR + "RRRR" + LINE_SEPARATOR + "RRRR" + LINE_SEPARATOR + "OOOOOOOOOOO" + LINE_SEPARATOR + "OOOO";
 	private static final String END_OF_DAY_MIDNIGHT = "24:00:00";
 	
-	private TimeConverter timeConverter; 
+	private TimeConverter timeConverter = new TimeConverterImp();
 	
 	@Test
 	public void testMidnight() {
