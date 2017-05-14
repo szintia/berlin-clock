@@ -26,7 +26,7 @@ public class TimeConverterImp implements TimeConverter {
 				int seconds = Integer.parseInt(aTime.substring(6, 8));
 				
 				if(hours == 24 && (minutes != 0 || seconds != 0)) {
-					throw new RuntimeException();
+					throw new TimeFormatException("This is Earth with only 24 hours!");
 				}
 				
 				String secondsLamp = (seconds % 2 == 0) ? YELLOW : OFF;
@@ -52,7 +52,7 @@ public class TimeConverterImp implements TimeConverter {
 						.append(fourthRowOn).append(fourthRowOff).toString();
 		}
 		
-		throw new RuntimeException();
+		throw new TimeFormatException("The time format pattern is not matching!");
 	}
 	
 }

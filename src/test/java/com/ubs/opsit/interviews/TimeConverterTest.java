@@ -19,94 +19,82 @@ public class TimeConverterTest {
 	private TimeConverter timeConverter = new TimeConverterImp();
 	
 	@Test
-	public void testMidnight() {
+	public void testMidnight() throws TimeFormatException {
 		Assert.assertEquals(CONVERTED_START_OF_DAY_MIDNIGHT, timeConverter.convertTime(START_OF_DAY_MIDNIGHT));
 	}
 	
 	@Test
-	public void testMiddleOfTheAfternoon() {
+	public void testMiddleOfTheAfternoon() throws TimeFormatException {
 		Assert.assertEquals(CONVERTED_MIDDLE_OF_THE_AFTERNOON, timeConverter.convertTime(MIDDLE_OF_THE_AFTERNOON));
 	}
 	
 	@Test
-	public void testJustBeforeMidnight() {
+	public void testJustBeforeMidnight() throws TimeFormatException {
 		Assert.assertEquals(CONVERTED_JUST_BEFORE_MIDNIGHT, timeConverter.convertTime(JUST_BEFORE_MIDNIGHT));
 	}
 	
 	@Test
-	public void testMidnight2() {
+	public void testMidnight2() throws TimeFormatException {
 		Assert.assertEquals(CONVERTED_END_OF_DAY_MIDNIGHT, timeConverter.convertTime(END_OF_DAY_MIDNIGHT));
 	}
 	
-	@Test
-	public void testInputIsTooLong() {
+	@Test(expected = TimeFormatException.class)
+	public void testInputIsTooLong() throws TimeFormatException {
 		timeConverter.convertTime("100:00:00");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testInputIsTooShort() {
+	@Test(expected = TimeFormatException.class)
+	public void testInputIsTooShort() throws TimeFormatException {
 		timeConverter.convertTime("2:00:00");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testIsHourGreaterThanExpected() {
+	@Test(expected = TimeFormatException.class)
+	public void testIsHourGreaterThanExpected() throws TimeFormatException {
 		timeConverter.convertTime("24:01:01");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testIsHourLessThanExpected() {
+	@Test(expected = TimeFormatException.class)
+	public void testIsHourLessThanExpected() throws TimeFormatException {
 		timeConverter.convertTime("-4:01:01");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testIsMinuteGreaterThanExpected() {
+	@Test(expected = TimeFormatException.class)
+	public void testIsMinuteGreaterThanExpected() throws TimeFormatException {
 		timeConverter.convertTime("12:60:00");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testIsMinuteLessThanExpected() {
+	@Test(expected = TimeFormatException.class)
+	public void testIsMinuteLessThanExpected() throws TimeFormatException {
 		timeConverter.convertTime("14:-1:01");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testIsSecondGreaterThanExpected() {
+	@Test(expected = TimeFormatException.class)
+	public void testIsSecondGreaterThanExpected() throws TimeFormatException {
 		timeConverter.convertTime("12:22:60");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testIsSecondLessThanExpected() {
+	@Test(expected = TimeFormatException.class)
+	public void testIsSecondLessThanExpected() throws TimeFormatException {
 		timeConverter.convertTime("12:22:-2");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testPatternIsWrong() {
+	@Test(expected = TimeFormatException.class)
+	public void testPatternIsWrong() throws TimeFormatException {
 		timeConverter.convertTime("20;00:00");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testEndOfDayMidnightWithWrongMinuteAndSecond() {
+	@Test(expected = TimeFormatException.class)
+	public void testEndOfDayMidnightWithWrongMinuteAndSecond() throws TimeFormatException {
 		timeConverter.convertTime("24:12:60");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testMisplacedColon() {
+	@Test(expected = TimeFormatException.class)
+	public void testMisplacedColon() throws TimeFormatException {
 		timeConverter.convertTime("2:412:60");
-		//TODO test for exception thrown
 	}
 	
-	@Test
-	public void testInputIsNull() {
+	@Test(expected = TimeFormatException.class)
+	public void testInputIsNull() throws TimeFormatException {
 		timeConverter.convertTime(null);
-		//TODO test for exception thrown
 	}
 }
