@@ -37,4 +37,76 @@ public class TimeConverterTest {
 	public void testMidnight2() {
 		Assert.assertEquals(CONVERTED_END_OF_DAY_MIDNIGHT, timeConverter.convertTime(END_OF_DAY_MIDNIGHT));
 	}
+	
+	@Test
+	public void testInputIsTooLong() {
+		timeConverter.convertTime("100:00:00");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testInputIsTooShort() {
+		timeConverter.convertTime("2:00:00");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testIsHourGreaterThanExpected() {
+		timeConverter.convertTime("24:01:01");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testIsHourLessThanExpected() {
+		timeConverter.convertTime("-4:01:01");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testIsMinuteGreaterThanExpected() {
+		timeConverter.convertTime("12:60:00");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testIsMinuteLessThanExpected() {
+		timeConverter.convertTime("14:-1:01");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testIsSecondGreaterThanExpected() {
+		timeConverter.convertTime("12:22:60");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testIsSecondLessThanExpected() {
+		timeConverter.convertTime("12:22:-2");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testPatternIsWrong() {
+		timeConverter.convertTime("20;00:00");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testEndOfDayMidnightWithWrongMinuteAndSecond() {
+		timeConverter.convertTime("24:12:60");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testMisplacedColon() {
+		timeConverter.convertTime("2:412:60");
+		//TODO test for exception thrown
+	}
+	
+	@Test
+	public void testInputIsNull() {
+		timeConverter.convertTime(null);
+		//TODO test for exception thrown
+	}
 }
